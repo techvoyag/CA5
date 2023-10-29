@@ -12,6 +12,7 @@ pipeline {
         stage('Build and Run Docker Containers') {
             steps {
                 script {
+                    sh 'sudo dockerd'
                     // Run MongoDB Database Service
                     sh 'docker run -d --name db -p 27017:9002 techvoyag/ca5db'
 
