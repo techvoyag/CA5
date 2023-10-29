@@ -1,0 +1,22 @@
+version: "3"
+services:
+  # Node.js Application Service
+  app:
+    image: techvoyag/ca4frontend
+    ports:
+      - "3000:8080"
+    networks:
+      - mynetwork
+    depends_on:
+      - db
+
+  # MongoDB Database Service
+  db:
+    image: techvoyag/ca4db
+    ports:
+      - "27017:9002"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
