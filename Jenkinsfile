@@ -9,21 +9,11 @@ pipeline {
             }
         }
 
-        stage('Build and Run Docker Containers') {
+        stage('Build and Run Docker Compose') {
             steps {
-                script {
-                    sh 'sudo dockerd'
-                    // Run MongoDB Database Service
-                    sh 'docker run -d --name db -p 27017:9002 techvoyag/ca5db'
-
-                    // Wait for the MongoDB service to start (adjust the sleep time as needed)
-                    sleep(time: 30, unit: 'SECONDS')
-
-                    // Run Node.js Application Service
-                    sh 'docker run -d --name app -p 3000:8080 --network mynetwork --link db techvoyag/ca5frontend'
-                }
+                // Run docker-compose up
+                sh 'docker-compose up -d'
             }
         }
     }
-
 }
