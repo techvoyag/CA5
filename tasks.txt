@@ -6,5 +6,5 @@ docker compose
 web service
 
 20i0689
-docker compose
+docker compose jenkins
 
